@@ -19,6 +19,8 @@ public class DistanceService {
         while(startCity != endCity) {
             startCity = getNextCity(cityMap, startCity, visitedCities);
         }
+
+        System.out.println(showPath(visitedCities));
     }
 
     public City getNextCity(Mapper cityMap, City currCity, List<City> visitedCities) {
@@ -28,7 +30,7 @@ public class DistanceService {
         for (Map.Entry<String, City> city : cityMap.getCityMap().entrySet()) {
 
             //If entry is in same frontier as currCity and not in list of visited city
-            if(true && !false) {
+            if(city.getValue().getFrontier() == currCity.getFrontier() && !visitedCities.contains(city.getValue())) {
 
                 //If new city is closer than last city
                 if(nextCity == null || (calculateDistanceBetweenCities(currCity, city.getValue()) <
@@ -41,6 +43,7 @@ public class DistanceService {
         //If there is no new city go back and re-try last visited city
         if(nextCity == null) {
             getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), visitedCities);
+            visitedCities.remove(visitedCities.size() - 1);
         }
 
         visitedCities.add(nextCity);
@@ -51,5 +54,16 @@ public class DistanceService {
 
         return Point2D.distance(currCity.getCoordinate().getX(), currCity.getCoordinate().getY(),
                 nextCity.getCoordinate().getX(), nextCity.getCoordinate().getY());
+    }
+
+    public String showPath(List<City> visitedCities) {
+        String str = "";
+
+        for (City city : visitedCities) {
+            str += city.getName() + " -> ";
+        }
+
+        str += "goal";
+        return str;
     }
 }
