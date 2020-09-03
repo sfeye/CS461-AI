@@ -6,10 +6,10 @@ import java.util.List;
 public class City {
 
     String name;
-    Point2D coordinate;
+    Point2D.Float coordinate;
     List<Integer> frontier;
 
-    public City (String name, Point2D coordinate, List<Integer>  frontier) {
+    public City (String name, Point2D.Float coordinate, List<Integer>  frontier) {
         this.name = name;
         this.coordinate = coordinate;
         this.frontier = frontier;
@@ -23,11 +23,11 @@ public class City {
         this.name = name;
     }
 
-    public Point2D getCoordinate() {
+    public Point2D.Float getCoordinate() {
         return coordinate;
     }
 
-    public void setCoordinate(Point2D coordinate) {
+    public void setCoordinate(Point2D.Float coordinate) {
         this.coordinate = coordinate;
     }
 
@@ -35,7 +35,7 @@ public class City {
         return frontier;
     }
 
-    public void setFrontier(List<Integer> frontier) {
-        this.frontier = frontier;
+    public void setFrontier(int frontier) {
+        this.frontier.add(frontier);
     }
 }

@@ -24,7 +24,7 @@ public class Project1Application {
         MapperService mapperService = new MapperService();
         mapperService.mapperService(cityMap);
 
-        //DistanceService distanceService = new DistanceService();
-        //distanceService.distanceService(cityMap, startTown, endTown);
+        DistanceService distanceService = new DistanceService();
+        distanceService.distanceService(cityMap, startTown, endTown);
     }
 }

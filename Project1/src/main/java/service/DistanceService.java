@@ -1,5 +1,6 @@
 package service;
 
+import org.apache.commons.collections4.CollectionUtils;
 import utils.City;
 import utils.Mapper;
 
@@ -16,7 +17,7 @@ public class DistanceService {
         City startCity = cityMap.getCityMap().get(start);
         City endCity = cityMap.getCityMap().get(end);
 
-        while(startCity != endCity) {
+        while(!startCity.getName().equalsIgnoreCase(endCity.getName())) {
             startCity = getNextCity(cityMap, startCity, endCity,visitedCities);
         }
 
@@ -30,12 +31,12 @@ public class DistanceService {
         for (Map.Entry<String, City> city : cityMap.getCityMap().entrySet()) {
 
             // Check if we are in same frontier as goal
-            if(city.getValue().getFrontier() == goalCity.getFrontier()) {
+            if(CollectionUtils.containsAny(city.getValue().getFrontier(), goalCity.getFrontier())) {
                 nextCity = goalCity;
                 break;
             }
             //If entry is in same frontier as currCity and not in list of visited city
-            if(city.getValue().getFrontier() == currCity.getFrontier() && !visitedCities.contains(city.getValue())) {
+            if(CollectionUtils.containsAny(city.getValue().getFrontier(), currCity.getFrontier()) && !visitedCities.contains(city.getValue())) {
 
                 //If new city is closer than last city
                 if(nextCity == null || (calculateDistanceBetweenCities(currCity, city.getValue()) <
