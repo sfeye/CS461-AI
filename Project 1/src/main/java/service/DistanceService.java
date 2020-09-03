@@ -17,18 +17,23 @@ public class DistanceService {
         City endCity = cityMap.getCityMap().get(end);
 
         while(startCity != endCity) {
-            startCity = getNextCity(cityMap, startCity, visitedCities);
+            startCity = getNextCity(cityMap, startCity, endCity,visitedCities);
         }
 
         System.out.println(showPath(visitedCities));
     }
 
-    public City getNextCity(Mapper cityMap, City currCity, List<City> visitedCities) {
+    public City getNextCity(Mapper cityMap, City currCity, City goalCity, List<City> visitedCities) {
 
         City nextCity = null;
 
         for (Map.Entry<String, City> city : cityMap.getCityMap().entrySet()) {
 
+            // Check if we are in same frontier as goal
+            if(city.getValue().getFrontier() == goalCity.getFrontier()) {
+                nextCity = goalCity;
+                break;
+            }
             //If entry is in same frontier as currCity and not in list of visited city
             if(city.getValue().getFrontier() == currCity.getFrontier() && !visitedCities.contains(city.getValue())) {
 
@@ -42,7 +47,7 @@ public class DistanceService {
 
         //If there is no new city go back and re-try last visited city
         if(nextCity == null) {
-            getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), visitedCities);
+            getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), goalCity, visitedCities);
             visitedCities.remove(visitedCities.size() - 1);
         }
 
@@ -57,13 +62,13 @@ public class DistanceService {
     }
 
     public String showPath(List<City> visitedCities) {
-        String str = "";
+        StringBuilder str = new StringBuilder();
 
         for (City city : visitedCities) {
-            str += city.getName() + " -> ";
+            str.append(city.getName()).append(" -> ");
         }
 
-        str += "goal";
-        return str;
+        str.append("goal");
+        return str.toString();
     }
 }

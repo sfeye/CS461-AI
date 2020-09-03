@@ -43,5 +43,9 @@ public class MapperService {
 
     public void populateMap(Map<String, City> cityMap, ArrayList<Map<String, Integer>> cityNames, ArrayList<Point2D> cityCoordinates) {
 
+        //For file read testing
+        cityMap.entrySet().forEach(entity -> {
+            System.out.println(entity.getKey().toString() + ": " + entity.getValue().getCoordinate());
+        });
     }
 }
