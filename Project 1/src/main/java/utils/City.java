@@ -1,25 +1,16 @@
 package utils;
 
 import java.awt.geom.Point2D;
+import java.util.List;
 
 public class City {
 
-    String name;
     Point2D coordinate;
-    int frontier;
+    List<Integer> frontier;
 
-    public City (String name, Point2D coordinate, int frontier) {
-        this.name = name;
+    public City (Point2D coordinate, List<Integer>  frontier) {
         this.coordinate = coordinate;
         this.frontier = frontier;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Point2D getCoordinate() {
@@ -30,11 +21,11 @@ public class City {
         this.coordinate = coordinate;
     }
 
-    public int getFrontier() {
+    public List<Integer> getFrontier() {
         return frontier;
     }
 
-    public void setFrontier(int frontier) {
+    public void setFrontier(List<Integer> frontier) {
         this.frontier = frontier;
     }
 }
