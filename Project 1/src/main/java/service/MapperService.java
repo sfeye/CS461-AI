@@ -1,6 +1,5 @@
 package service;
 
-import javafx.util.Pair;
 import utils.City;
 import utils.Mapper;
 
@@ -18,15 +17,15 @@ public class MapperService {
         File citiesFile = new File(Objects.requireNonNull(classLoader.getResource("cities.txt")).getFile());
         File coordinatesFile = new File(Objects.requireNonNull(classLoader.getResource("coordinates.txt")).getFile());
 
-        ArrayList<Pair<String, Integer>> cityNames = readFileByFrontier(citiesFile);
+        ArrayList<Map<String, Integer>> cityNames = readFileByFrontier(citiesFile);
         ArrayList<Point2D> cityCoordinates = readFileByCoordinate(coordinatesFile);
 
         populateMap(cityMap.getCityMap(), cityNames, cityCoordinates);
     }
 
-    public ArrayList<Pair<String, Integer>> readFileByFrontier(File citiesFile) {
+    public ArrayList<Map<String, Integer>> readFileByFrontier(File citiesFile) {
 
-        ArrayList<Pair<String, Integer>> arr = new ArrayList<>();
+        ArrayList<Map<String, Integer>> arr = new ArrayList<>();
 
 
 
@@ -42,7 +41,7 @@ public class MapperService {
         return arr;
     }
 
-    public void populateMap(Map<String, City> cityMap, ArrayList<Pair<String, Integer>> cityNames, ArrayList<Point2D> cityCoordinates) {
+    public void populateMap(Map<String, City> cityMap, ArrayList<Map<String, Integer>> cityNames, ArrayList<Point2D> cityCoordinates) {
 
     }
 }

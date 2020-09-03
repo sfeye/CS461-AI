@@ -17,12 +17,14 @@ public class Project1Application {
         System.out.println("Enter the town you wish to end at and click enter.");
         String endTown = sc.nextLine().toUpperCase();
 
+        System.out.println("We will start at: " + startTown + ", and end at: " + endTown);
+
         Mapper cityMap = new Mapper(new HashMap<>());
 
         MapperService mapperService = new MapperService();
         mapperService.mapperService(cityMap);
 
-        DistanceService distanceService = new DistanceService();
-        distanceService.distanceService(cityMap, startTown, endTown);
+        //DistanceService distanceService = new DistanceService();
+        //distanceService.distanceService(cityMap, startTown, endTown);
     }
 }
