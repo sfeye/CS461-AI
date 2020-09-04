@@ -50,8 +50,8 @@ public class DistanceService {
                     visitedFrontiers.add(getCommonFrontier(currCity, city.getValue()));
                 }
                 //If new city is closer than last city
-                else if(!currCity.equals(city.getValue()) && calculateDistanceBetweenCities(currCity, city.getValue()) <
-                        calculateDistanceBetweenCities(currCity, nextCity) &&
+                else if(!currCity.equals(city.getValue()) && calculateDistanceBetweenCities(goalCity, city.getValue()) <
+                        calculateDistanceBetweenCities(goalCity, nextCity) &&
                         !visitedFrontiers.contains(getCommonFrontier(currCity, city.getValue()))) {
 
                     //For distance testing
