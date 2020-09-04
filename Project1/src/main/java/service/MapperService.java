@@ -68,9 +68,8 @@ public class MapperService {
         while((line = br.readLine()) != null) {
 
             String[] parseSpace = line.split(" ");
-            //System.out.println(parseSpace[0]);
 
-            arr.add(new Pair<String, Point2D.Float>(parseSpace[0],new Point2D.Float(Float.parseFloat(parseSpace[1]), Float.parseFloat(parseSpace[2]))));
+            arr.add(new Pair<String, Point2D.Float>(parseSpace[0].toUpperCase(),new Point2D.Float(Float.parseFloat(parseSpace[1]), Float.parseFloat(parseSpace[2]))));
         }
 
         return arr;
@@ -82,12 +81,12 @@ public class MapperService {
 
         for (Pair<String, Integer> city: cityNames) {
 
-            if(cityMap.containsKey(city.getKey())) {
-                cityMap.get(city.getKey()).setFrontier(city.getValue());
+            if(cityMap.containsKey(city.getKey().toUpperCase())) {
+                cityMap.get(city.getKey().toUpperCase()).setFrontier(city.getValue());
             } else {
                 List<Integer> frontier = new ArrayList<>();
                 frontier.add(city.getValue());
-                cityMap.put(city.getKey(), new City(city.getKey(), defaultPoint, frontier));
+                cityMap.put(city.getKey().toUpperCase(), new City(city.getKey().toUpperCase(), defaultPoint, frontier));
             }
         }
 

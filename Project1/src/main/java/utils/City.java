@@ -38,4 +38,9 @@ public class City {
     public void setFrontier(int frontier) {
         this.frontier.add(frontier);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

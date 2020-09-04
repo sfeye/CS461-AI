@@ -17,8 +17,12 @@ public class DistanceService {
         City startCity = cityMap.getCityMap().get(start);
         City endCity = cityMap.getCityMap().get(end);
 
+//        System.out.println(startCity.toString());
+//        System.out.println(endCity.toString());
+
         while(!startCity.getName().equalsIgnoreCase(endCity.getName())) {
-            startCity = getNextCity(cityMap, startCity, endCity,visitedCities);
+            visitedCities.add(startCity);
+            startCity = getNextCity(cityMap, startCity, endCity, visitedCities);
         }
 
         System.out.println(showPath(visitedCities));
@@ -31,17 +35,27 @@ public class DistanceService {
         for (Map.Entry<String, City> city : cityMap.getCityMap().entrySet()) {
 
             // Check if we are in same frontier as goal
-            if(CollectionUtils.containsAny(city.getValue().getFrontier(), goalCity.getFrontier())) {
+            if(CollectionUtils.containsAny(currCity.getFrontier(), goalCity.getFrontier())) {
                 nextCity = goalCity;
+                visitedCities.add(goalCity);
                 break;
             }
             //If entry is in same frontier as currCity and not in list of visited city
-            if(CollectionUtils.containsAny(city.getValue().getFrontier(), currCity.getFrontier()) && !visitedCities.contains(city.getValue())) {
+            if(CollectionUtils.containsAny(city.getValue().getFrontier(), currCity.getFrontier()) &&
+                    !visitedCities.contains(city.getValue())) {
 
-                //If new city is closer than last city
-                if(nextCity == null || (calculateDistanceBetweenCities(currCity, city.getValue()) <
-                        calculateDistanceBetweenCities(currCity, nextCity))) {
+                if(nextCity == null) {
                     nextCity = city.getValue();
+                }
+                //If new city is closer than last city
+                else if(!currCity.equals(city.getValue()) && calculateDistanceBetweenCities(currCity, city.getValue()) <
+                        calculateDistanceBetweenCities(currCity, nextCity)) {
+
+                    System.out.println(nextCity.toString());
+                    System.out.println(calculateDistanceBetweenCities(currCity, city.getValue()) + "  <  " +
+                            calculateDistanceBetweenCities(currCity, nextCity));
+                    nextCity = city.getValue();
+                    System.out.println(nextCity.toString());
                 }
             }
         }
@@ -49,10 +63,8 @@ public class DistanceService {
         //If there is no new city go back and re-try last visited city
         if(nextCity == null) {
             getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), goalCity, visitedCities);
-            visitedCities.remove(visitedCities.size() - 1);
         }
 
-        visitedCities.add(nextCity);
         return nextCity;
     }
 
@@ -69,7 +81,7 @@ public class DistanceService {
             str.append(city.getName()).append(" -> ");
         }
 
-        str.append("goal");
+        str.append("Welcome to " + visitedCities.get(visitedCities.size() - 1).getName() + "!");
         return str.toString();
     }
 }
