@@ -9,5 +9,5 @@
 ### Using the application
 
 * After compilation a terminal window will pop up allowing for textual input
-* Input your start and end locations (a list of these can be found in the cities text file)
+* Input your start and end locations (a list of these can be found in the cities text file [here](https://github.com/sfeye/CS461-AI/blob/master/Project1/src/main/resources/cities.txt))
 * The program will return the path that you should take based on a best-fit algorithm
