@@ -14,6 +14,7 @@ public class DistanceService {
     public void distanceService(Mapper cityMap, String start, String end) {
 
         List<City> visitedCities = new ArrayList<>();
+        List<Integer> visitedFrontiers = new ArrayList<>();
         City startCity = cityMap.getCityMap().get(start);
         City endCity = cityMap.getCityMap().get(end);
 
@@ -22,13 +23,13 @@ public class DistanceService {
 
         while(!startCity.getName().equalsIgnoreCase(endCity.getName())) {
             visitedCities.add(startCity);
-            startCity = getNextCity(cityMap, startCity, endCity, visitedCities);
+            startCity = getNextCity(cityMap, startCity, endCity, visitedCities, visitedFrontiers);
         }
 
         System.out.println(showPath(visitedCities));
     }
 
-    public City getNextCity(Mapper cityMap, City currCity, City goalCity, List<City> visitedCities) {
+    public City getNextCity(Mapper cityMap, City currCity, City goalCity, List<City> visitedCities, List<Integer> visitedFrontiers) {
 
         City nextCity = null;
 
@@ -46,10 +47,12 @@ public class DistanceService {
 
                 if(nextCity == null) {
                     nextCity = city.getValue();
+                    visitedFrontiers.add(getCommonFrontier(currCity, city.getValue()));
                 }
                 //If new city is closer than last city
                 else if(!currCity.equals(city.getValue()) && calculateDistanceBetweenCities(currCity, city.getValue()) <
-                        calculateDistanceBetweenCities(currCity, nextCity)) {
+                        calculateDistanceBetweenCities(currCity, nextCity) &&
+                        !visitedFrontiers.contains(getCommonFrontier(currCity, city.getValue()))) {
 
                     //For distance testing
                     //System.out.println(city.getValue().getName() + ": " + calculateDistanceBetweenCities(currCity, city.getValue()) + "  <  " +
@@ -61,8 +64,8 @@ public class DistanceService {
         }
 
         //If there is no new city go back and re-try last visited city
-        if(nextCity == null && visitedCities.get(visitedCities.size() - 2) != null) {
-            getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), goalCity, visitedCities);
+        if(nextCity == null && visitedCities.size() >= 2) {
+            getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), goalCity, visitedCities, visitedFrontiers);
         }
 
         return nextCity;
@@ -72,6 +75,20 @@ public class DistanceService {
 
         return Point2D.distance(currCity.getCoordinate().getX(), currCity.getCoordinate().getY(),
                 nextCity.getCoordinate().getX(), nextCity.getCoordinate().getY());
+    }
+
+    public int getCommonFrontier(City prevCity, City nextCity) {
+        int frontier = 0;
+
+        for(int i = 0; i < prevCity.getFrontier().size(); i++) {
+            for (int k = 0; k < nextCity.getFrontier().size(); k++) {
+                if (prevCity.getFrontier().get(i).equals(nextCity.getFrontier().get(k))) {
+                    frontier = prevCity.getFrontier().get(i);
+                    break;
+                }
+            }
+        }
+        return frontier;
     }
 
     public String showPath(List<City> visitedCities) {
