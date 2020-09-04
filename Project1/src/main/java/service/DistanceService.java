@@ -51,17 +51,17 @@ public class DistanceService {
                 else if(!currCity.equals(city.getValue()) && calculateDistanceBetweenCities(currCity, city.getValue()) <
                         calculateDistanceBetweenCities(currCity, nextCity)) {
 
-                    System.out.println(nextCity.toString());
-                    System.out.println(calculateDistanceBetweenCities(currCity, city.getValue()) + "  <  " +
-                            calculateDistanceBetweenCities(currCity, nextCity));
+                    //For distance testing
+                    //System.out.println(city.getValue().getName() + ": " + calculateDistanceBetweenCities(currCity, city.getValue()) + "  <  " +
+                    //        nextCity.getName() + ": " + calculateDistanceBetweenCities(currCity, nextCity));
+
                     nextCity = city.getValue();
-                    System.out.println(nextCity.toString());
                 }
             }
         }
 
         //If there is no new city go back and re-try last visited city
-        if(nextCity == null) {
+        if(nextCity == null && visitedCities.get(visitedCities.size() - 2) != null) {
             getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), goalCity, visitedCities);
         }
 

@@ -94,6 +94,6 @@ public class MapperService {
             cityMap.get(coordinate.getKey()).setCoordinate(coordinate.getValue());
 
         //For file read testing
-        cityMap.forEach((key, value) -> System.out.println(key.toString() + ": (" + value.getCoordinate().getX() + ", " +value.getCoordinate().getY() + ") " + value.getFrontier()));
+        //cityMap.forEach((key, value) -> System.out.println(key.toString() + ": (" + value.getCoordinate().getX() + ", " +value.getCoordinate().getY() + ") " + value.getFrontier()));
     }
 }
