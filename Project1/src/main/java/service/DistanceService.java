@@ -47,7 +47,6 @@ public class DistanceService {
 
                 if(nextCity == null) {
                     nextCity = city.getValue();
-                    visitedFrontiers.add(getCommonFrontier(currCity, city.getValue()));
                 }
                 //If new city is closer than last city
                 else if(!currCity.equals(city.getValue()) && calculateDistanceBetweenCities(goalCity, city.getValue()) <
@@ -68,6 +67,7 @@ public class DistanceService {
             getNextCity(cityMap, visitedCities.get(visitedCities.size() - 2), goalCity, visitedCities, visitedFrontiers);
         }
 
+        visitedFrontiers.add(getCommonFrontier(currCity, nextCity));
         return nextCity;
     }
 
