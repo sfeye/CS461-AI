@@ -18,6 +18,10 @@ public class DistanceService {
         City startCity = cityMap.getCityMap().get(start);
         City endCity = cityMap.getCityMap().get(end);
 
+        if(startCity == null || endCity == null) {
+            System.out.println("The town could not be located, try again.");
+            return;
+        }
 //        System.out.println(startCity.toString());
 //        System.out.println(endCity.toString());
 
