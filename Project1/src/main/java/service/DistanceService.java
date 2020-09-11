@@ -52,6 +52,9 @@ public class DistanceService {
                     !visitedCities.contains(city.getValue())) {
 
                 if(nextCity == null) {
+                    if(visitedFrontiers.contains(getCommonFrontier(city.getValue(), currCity))) {
+                        path.remove(path.size() - 1);
+                    }
                     nextCity = city.getValue();
                 }
                 //If new city is closer than last city
