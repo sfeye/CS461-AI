@@ -128,17 +128,17 @@ public class DistanceService {
         return map;
     }
 
-    public String printCoordinatesForJSON(Map<String, Point2D.Float> coords) {
+    public String printCoordinatesForJSON(List<City> path) {
         StringBuilder str = new StringBuilder();
-        str.append("{");
+        str.append("[");
 
-        coords.forEach((key, value) -> {
-            str.append( "\"" + key + "\": { \"x\": \"" + value.getX() + "\", \"y\": \"" + value.getY() + "\" },");
+        path.forEach(city -> {
+            str.append( "{\"lat\": " + city.getCoordinate().getX() + ", \"lng\": " + city.getCoordinate().getY() + "},");
         });
 
         str.deleteCharAt(str.length() - 1);
 
-        str.append("}");
+        str.append("]");
         return str.toString();
     }
 }

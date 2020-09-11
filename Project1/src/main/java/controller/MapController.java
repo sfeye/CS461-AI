@@ -31,8 +31,12 @@ public class MapController {
 
 
         coordinates.forEach((key, value) -> {
-            setStart(key.toUpperCase());
-            setEnd(value.toUpperCase());
+            if(key.equalsIgnoreCase("start")) {
+                setStart(value.toUpperCase());
+            }
+            else {
+                setEnd(value.toUpperCase());
+            }
         });
 
         Mapper cityMap = new Mapper(new HashMap<>());
@@ -43,7 +47,7 @@ public class MapController {
         distanceService = new DistanceService();
         response.setContentType("application/json");
         response.getWriter().write(
-            distanceService.printCoordinatesForJSON(distanceService.showCoordinates(distanceService.distanceService(cityMap, start, end)))
+            distanceService.printCoordinatesForJSON(distanceService.distanceService(cityMap, start, end))
         );
 
     }
