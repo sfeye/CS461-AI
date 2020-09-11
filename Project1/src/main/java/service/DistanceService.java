@@ -1,17 +1,20 @@
 package service;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.stereotype.Service;
 import utils.City;
 import utils.Mapper;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class DistanceService {
 
-    public void distanceService(Mapper cityMap, String start, String end) {
+    public List<City>  distanceService(Mapper cityMap, String start, String end) {
 
         List<City> path = new ArrayList<>();
         List<City> visitedCities = new ArrayList<>();
@@ -20,8 +23,7 @@ public class DistanceService {
         City endCity = cityMap.getCityMap().get(end);
 
         if(startCity == null || endCity == null) {
-            System.out.println("The town could not be located, try again.");
-            return;
+            System.out.println( "The town could not be located, try again." );
         }
 //        System.out.println(startCity.toString());
 //        System.out.println(endCity.toString());
@@ -32,7 +34,7 @@ public class DistanceService {
             startCity = getNextCity(cityMap, startCity, endCity, visitedCities, visitedFrontiers, path);
         }
 
-        System.out.println(showPath(path));
+        return path;
     }
 
     public City getNextCity(Mapper cityMap, City currCity, City goalCity, List<City> visitedCities, List<Integer> visitedFrontiers, List<City> path) {
@@ -112,6 +114,31 @@ public class DistanceService {
         }
 
         str.append("Welcome to " + path.get(path.size() - 1).getName() + "!");
+        return str.toString();
+    }
+
+    public Map<String, Point2D.Float> showCoordinates( List<City> path ) {
+
+        Map<String, Point2D.Float> map = new HashMap<>();
+
+        path.forEach(city -> {
+            map.put(city.getName(), city.getCoordinate());
+        });
+
+        return map;
+    }
+
+    public String printCoordinatesForJSON(Map<String, Point2D.Float> coords) {
+        StringBuilder str = new StringBuilder();
+        str.append("{");
+
+        coords.forEach((key, value) -> {
+            str.append( "\"" + key + "\": { \"x\": \"" + value.getX() + "\", \"y\": \"" + value.getY() + "\" },");
+        });
+
+        str.deleteCharAt(str.length() - 1);
+
+        str.append("}");
         return str.toString();
     }
 }

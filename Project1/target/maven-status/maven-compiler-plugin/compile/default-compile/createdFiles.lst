@@ -1,4 +1,4 @@
-Project1Application.class
+controller/MapController.class
 service/MapperService.class
 service/DistanceService.class
 utils/Mapper.class

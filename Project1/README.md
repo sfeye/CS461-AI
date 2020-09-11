@@ -4,7 +4,7 @@
 
 * Open the project in IntelliJ and import all dependencies using maven install
 * Configure your SDK appropriately, I use 11.0.3 and a language level of 8+
-* Run the driver class `Project1Application`
+* Run the driver class `app.Project1Application`
 
 ### Using the application
 

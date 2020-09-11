@@ -1,6 +1,7 @@
 package service;
 
 import org.apache.commons.math3.util.Pair;
+import org.springframework.stereotype.Service;
 import utils.City;
 import utils.Mapper;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@Service
 public class MapperService {
 
     public void mapperService(Mapper cityMap) {
