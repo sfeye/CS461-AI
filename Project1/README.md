@@ -1,10 +1,12 @@
-# Project 1 : Guided Search
+# Project 1 
+Hi, I added more, [check it out](#part-2-displaying-the-map-via-google-maps-api)
 
-### Running the application
+## Part 1 Guided Search
+### Running the application - git checkout master
 
 * Open the project in IntelliJ and import all dependencies using maven install
 * Configure your SDK appropriately, I use 11.0.3 and a language level of 8+
-* Run the driver class `app.Project1Application`
+* Run the driver class `Project1Application`
 
 ### Using the application
 
@@ -19,3 +21,41 @@ ABILENE to VIOLA
 
 SALINA to HARPER
 ![image](https://user-images.githubusercontent.com/37005498/92854574-ecc2ac80-f3b6-11ea-92a8-79b30aba6c77.png)
+
+
+## Part 2 Displaying the map via Google Maps API
+
+I got tired of plugging in the coordinates individually to google maps to test because I couldn't find a good tool to map my ouputs in one go, so I made one.
+
+### Running the application - git checkout map
+
+**Java Spring Boot Application - REST API**
+* Don't forget to switch to the map branch to try this!
+* I changed the driver class for my api/ai to a springboot application. You can run that after installing the maven dependencies.
+* This application has an api endpoint at `localhost:8080/map/points`.
+
+**ReactJS WebApp**
+* In a terminal (or just use VSCode) cd to the folder `mapwebapp`
+* Oh yeah install node and npm if you haven't yet...
+* npm install all of the necesarry dependencies using `npm install --save`
+* Launch it! with `npm start` (your browser should point you to localhost:3000)
+
+### Using the application
+
+* In the test box you can input start and end cities at the same time separated by a comma. I know... it looks amazing...
+* Click the submit button and watch how an ~~overly watermarked~~ astounding google map will diplay your path using... no way... a LINE.
+* *fine*
+
+---
+
+ABILENE to VIOLA
+![image](https://user-images.githubusercontent.com/37005498/92966333-f7278980-f43c-11ea-955a-b5a8aacc100d.png)
+
+SALINA to HARPER
+![image](https://user-images.githubusercontent.com/37005498/92966412-1cb49300-f43d-11ea-8cbc-f3c4be688a1e.png)
+
+### FAQ
+
+* yeah this took a little longer than i thought it would
+* duh the overlapping lines were on purpose
+* yes, you definitely should have just stopped reading after part 1
