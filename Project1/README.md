@@ -24,9 +24,6 @@ SALINA to HARPER
 
 
 ## Part 2 Displaying the map via Google Maps API
-
-I got tired of plugging in the coordinates individually to google maps to test because I couldn't find a good tool to map my ouputs in one go, so I made one.
-
 ### Running the application - git checkout map
 
 **Java Spring Boot Application - REST API**
@@ -36,15 +33,14 @@ I got tired of plugging in the coordinates individually to google maps to test b
 
 **ReactJS WebApp**
 * In a terminal (or just use VSCode) cd to the folder `mapwebapp`
-* Oh yeah install node and npm if you haven't yet...
-* npm install all of the necesarry dependencies using `npm install --save`
+* Oh yeah install node and npm if you haven't yet.
+* Install all of the necesarry dependencies using `npm install --save`
 * Launch it! with `npm start` (your browser should point you to localhost:3000)
 
 ### Using the application
 
-* In the test box you can input start and end cities at the same time separated by a comma. I know... it looks amazing...
+* In the test box you can input start and end cities at the same time separated by a comma.
 * Click the submit button and watch how an ~~overly watermarked~~ astounding google map will diplay your path using... no way... a LINE.
-* *fine*
 
 ---
 
