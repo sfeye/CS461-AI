@@ -1,5 +1,5 @@
 # Project 1 
-Hi, I added more, [check it out](#part-2-displaying-the-map-via-google-maps-api)
+Hi, I added more [check it out](#part-2-displaying-the-map-via-google-maps-api)
 
 ## Part 1 Guided Search
 ### Running the application - git checkout master
@@ -32,15 +32,15 @@ SALINA to HARPER
 * This application has an api endpoint at `localhost:8080/map/points`.
 
 **ReactJS WebApp**
-* In a terminal (or just use VSCode) cd to the folder `mapwebapp`
-* Oh yeah install node and npm if you haven't yet.
+* Confirm that node and npm are installed on your cpu `node -v`, `npm -v`
+* In a terminal cd to the folder `mapwebapp`
 * Install all of the necesarry dependencies using `npm install --save`
 * Launch it! with `npm start` (your browser should point you to localhost:3000)
 
 ### Using the application
 
 * In the test box you can input start and end cities at the same time separated by a comma.
-* Click the submit button and watch how an ~~overly watermarked~~ astounding google map will diplay your path using... no way... a LINE.
+* Click the submit button and watch how an ~~overly watermarked~~ astounding google map will diplay your path using a line.
 
 ---
 
@@ -49,9 +49,3 @@ ABILENE to VIOLA
 
 SALINA to HARPER
 ![image](https://user-images.githubusercontent.com/37005498/92966412-1cb49300-f43d-11ea-8cbc-f3c4be688a1e.png)
-
-### FAQ
-
-* yeah this took a little longer than i thought it would
-* duh the overlapping lines were on purpose
-* yes, you definitely should have just stopped reading after part 1
