@@ -1,5 +1,4 @@
 # Project 1 
-Hi, I added more [check it out](#part-2-displaying-the-map-via-google-maps-api)
 
 ## Part 1 Guided Search
 ### Running the application - git checkout master
