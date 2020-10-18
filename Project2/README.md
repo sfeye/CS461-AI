@@ -1,7 +1,5 @@
 # Project 2
 
-
-## Part 2 MCTS
 ### Running the application - git checkout master
 
 * Open the project in IntelliJ and import all dependencies using maven install
