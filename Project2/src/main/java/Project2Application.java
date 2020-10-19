@@ -52,12 +52,6 @@ public class Project2Application {
                 int col = sc.nextInt();
                 Position pos = new Position(board.getLowest(col), col);
 
-                if (!board.getEmptyPositions().contains(pos)){
-                    System.out.println("Invalid position... Try again.");
-                    col = sc.nextInt();
-                    pos = new Position(board.getLowest(col), col);
-                }
-
                 board.performMove(1, pos);
 
                 board.printBoard();
