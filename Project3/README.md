@@ -1,2 +1,4 @@
-# CS461-AI
-Collection of projects for AI class - Fall 2020
+# Project 3
+
+Made using Google Colab.
+The Results and my report can be viewed in the notebook.
